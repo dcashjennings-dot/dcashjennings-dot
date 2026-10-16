@@ -69,6 +69,7 @@ section h2 {
 .carousel-container {
     position: relative;
     width: 100%;
+    min-width: 900px;
     max-width: 900px;
     margin: 0 auto 40px;
     overflow: hidden;
@@ -119,10 +120,6 @@ section h2 {
 
 .next {
     right: 20px;
-}
-
-.carousel-btn {
-    position: fixed;
 }
 
 /* Animation */
