@@ -72,6 +72,9 @@ section h2 {
     max-width: 900px;
     margin: 0 auto 40px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Track */
