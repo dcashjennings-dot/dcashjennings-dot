@@ -24,9 +24,8 @@ function openImage(src) {
     document.body.appendChild(overlay);
 }
 
-
 /* ================================
-   Browser-Consistent Carousel
+   Two-Way Pixel-Based Carousel
 ================================ */
 
 const track = document.querySelector('.carousel-track');
@@ -35,18 +34,18 @@ const nextBtn = document.querySelector('.next');
 const images = document.querySelectorAll('.carousel-track img');
 
 let index = 0;
+const slideAmount = 420; // 400px image + 20px margin
 
-// Move by percentage instead of pixels (works the same in all browsers)
 nextBtn.addEventListener('click', () => {
     if (index < images.length - 1) {
         index++;
-        track.style.transform = `translateX(-${index * (100 / images.length)}%)`;
+        track.style.transform = `translateX(-${index * slideAmount}px)`;
     }
 });
 
 prevBtn.addEventListener('click', () => {
     if (index > 0) {
         index--;
-        track.style.transform = `translateX(-${index * (100 / images.length)}%)`;
+        track.style.transform = `translateX(-${index * slideAmount}px)`;
     }
 });
