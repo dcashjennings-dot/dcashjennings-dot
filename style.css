@@ -216,33 +216,47 @@ section h2 {
   75% { transform: translateX(-300%); }
   100% { transform: translateX(-300%); }
 }
-
 /* Contact Section */
 .contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 60px;
-  padding: 40px 0;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 220px;           /* adjust to taste */
+  max-width: 900px;
+  width: 100%;
   border-top: 1px solid #333;
-  width: min(900px, 100%);
   background: transparent;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
+/* Headline and body spacing */
 .contact h2 {
-  font-size: 34px;
-  font-weight: 700;
+  font-size: 28px;
+  margin: 0 0 8px 0;
   color: #ffffff;
-  margin-bottom: 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .contact p {
-  font-size: 22px;
-  font-weight: 500;
-  color: #dcdcdc;
-  line-height: 1.8;
   margin: 0;
+  font-size: 18px;
+  color: #dcdcdc;
+  line-height: 1.6;
+}
+
+/* Make contact text slightly smaller on narrow screens */
+@media (max-width: 640px) {
+  .contact {
+    padding: 28px 16px;
+    min-height: 180px;
+  }
+  .contact h2 { font-size: 20px; }
+  .contact p { font-size: 16px; }
 }
 
 /* Footer */
