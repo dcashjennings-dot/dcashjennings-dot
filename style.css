@@ -78,16 +78,19 @@ section h2 {
 .carousel-track {
     display: flex;
     transition: transform 0.4s ease;
+    width: max-content;
 }
 
 /* Images */
 .carousel-track img {
+    flex-shrink: 0;
     width: 400px;
     height: 400px;
     object-fit: cover;
     border-radius: 6px;
     margin-right: 20px;
 }
+
 /* Buttons */
 .carousel-btn {
     position: absolute;
@@ -114,7 +117,6 @@ section h2 {
 .next {
     right: 10px;
 }
-
 
 /* Animation */
 @keyframes slide {
