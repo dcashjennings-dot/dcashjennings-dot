@@ -1,4 +1,7 @@
-// Make carousel images open in a full-screen popup
+/* ================================
+   Full-Screen Image Popup
+================================ */
+
 document.querySelectorAll('.carousel-track img').forEach(img => {
     img.addEventListener('click', () => {
         openImage(img.src);
@@ -21,25 +24,29 @@ function openImage(src) {
     document.body.appendChild(overlay);
 }
 
-// Carousel controls
+
+/* ================================
+   Browser-Consistent Carousel
+================================ */
+
 const track = document.querySelector('.carousel-track');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
+const images = document.querySelectorAll('.carousel-track img');
 
 let index = 0;
 
-// Each image is now 400px wide + 20px margin = 420px slide distance
+// Move by percentage instead of pixels (works the same in all browsers)
 nextBtn.addEventListener('click', () => {
-    const images = document.querySelectorAll('.carousel-track img');
     if (index < images.length - 1) {
         index++;
-        track.style.transform = `translateX(-${index * 420}px)`;
+        track.style.transform = `translateX(-${index * (100 / images.length)}%)`;
     }
 });
 
 prevBtn.addEventListener('click', () => {
     if (index > 0) {
         index--;
-        track.style.transform = `translateX(-${index * 420}px)`;
+        track.style.transform = `translateX(-${index * (100 / images.length)}%)`;
     }
 });
