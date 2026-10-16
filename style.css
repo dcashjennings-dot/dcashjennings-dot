@@ -88,8 +88,8 @@ section h2 {
 /* Images */
 .carousel-track img {
     flex-shrink: 0;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     object-fit: cover;
     border-radius: 6px;
     margin-right: 20px;
