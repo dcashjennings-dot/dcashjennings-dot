@@ -1,46 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dylan’s Site</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dylan’s Site</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
-<main>
-
+  <main>
     <!-- Gallery at the top -->
-   <section class="carousel-container">
-    <button class="carousel-btn prev">&#10094;</button>
+    <section class="carousel-container" id="carousel" tabindex="0" aria-roledescription="carousel" aria-label="Photo gallery">
+      <button class="carousel-btn prev" id="prevBtn" aria-label="Previous image">&#10094;</button>
 
-    <div class="carousel-track">
-        <img src="images/photo1.jpg" alt="Photo 1">
-        <img src="images/photo2.jpg" alt="Photo 2">
-        <img src="images/photo3.png" alt="Photo 3">
-        <img src="images/photo4.jpg" alt="Photo 4">
-    </div>
+      <div class="carousel-track" id="track" role="list">
+        <div class="carousel-slide" role="listitem" data-index="0" aria-hidden="false">
+          <img src="images/photo1.jpg" alt="Photo 1">
+        </div>
+        <div class="carousel-slide" role="listitem" data-index="1" aria-hidden="true">
+          <img src="images/photo2.jpg" alt="Photo 2">
+        </div>
+        <div class="carousel-slide" role="listitem" data-index="2" aria-hidden="true">
+          <img src="images/photo3.png" alt="Photo 3">
+        </div>
+        <div class="carousel-slide" role="listitem" data-index="3" aria-hidden="true">
+          <img src="images/photo4.jpg" alt="Photo 4">
+        </div>
+      </div>
 
-    <button class="carousel-btn next">&#10095;</button>
-</section>
+      <button class="carousel-btn next" id="nextBtn" aria-label="Next image">&#10095;</button>
+
+      <div class="carousel-status" id="carouselStatus" aria-live="polite" aria-atomic="true">Image 1 of 4</div>
+    </section>
 
     <!-- Contact at the bottom -->
-   <section class="contact">
-    <h2>Contact Me</h2>
-    <p>Call or Text (337)-446-6659<br>
-    Or email dcashjennings@gmail.com<br>
-    For a free consultation.</p>
-</section>
-    </p>
-</section>
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <p>
+        Call or Text (337)-446-6659<br />
+        Or email <a href="mailto:dcashjennings@gmail.com">dcashjennings@gmail.com</a><br />
+        For a free consultation.
+      </p>
+    </section>
+  </main>
 
-</main>
-
-<footer>
+  <footer>
     © 2026 Bigfatmonkeydude
-</footer>
+  </footer>
 
-<script src="script.js"></script>
+  <script>
+    (function () {
+      const carousel = document.getElementById('carousel');
+      const track = document.getElementById('track');
+      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const status = document.getElementById('carouselStatus');
+
+      let currentIndex = 0;
+      const total = slides.length;
+
+      // Ensure track is laid out horizontally
+      track.style.display = 'flex';
+      track.style.transition = 'transform 300ms ease';
+
+      function updateUI() {
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+
+        slides.forEach((s, i) => {
+          const hidden = i !== currentIndex;
+          s.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+          s.tabIndex = hidden ? -1 : 0;
+        });
+
+        status.textContent = `Image ${currentIndex + 1} of ${total}`;
+      }
+
+      function showIndex(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        currentIndex = index;
+        updateUI();
+      }
+
+      function next() { showIndex(currentIndex + 1); }
+      function prev() { showIndex(currentIndex - 1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      // Keyboard support when carousel has focus or a child is focused
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prev();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          next();
+        }
+      });
+
+      // Also allow arrow keys when any element inside carousel is focused
+      document.addEventListener('keydown', (e) => {
+        const active = document.activeElement;
+        if (!carousel.contains(active)) return;
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prev();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          next();
+        }
+      });
+
+      // Optional: allow clicking images to focus the carousel for keyboard control
+      slides.forEach(s => {
+        s.addEventListener('click', () => carousel.focus());
+      });
+
+      // Initialize layout: make each slide take full width
+      slides.forEach(slide => {
+        slide.style.minWidth = '100%';
+        slide.style.flexShrink = '0';
+      });
+
+      updateUI();
+    })();
+  </script>
 </body>
 </html>
