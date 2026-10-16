@@ -34,7 +34,7 @@ const nextBtn = document.querySelector('.next');
 const images = document.querySelectorAll('.carousel-track img');
 
 let index = 0;
-const slideAmount = 420; // 400px image + 20px margin
+const slideAmount = 920; // 900px image + 20px margin
 
 nextBtn.addEventListener('click', () => {
     if (index < images.length - 1) {
