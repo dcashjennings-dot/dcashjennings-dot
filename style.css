@@ -114,11 +114,15 @@ section h2 {
 }
 
 .prev {
-    left: 10px;
+    left: 20px;
 }
 
 .next {
-    right: 10px;
+    right: 20px;
+}
+
+.carousel-btn {
+    position: fixed;
 }
 
 /* Animation */
