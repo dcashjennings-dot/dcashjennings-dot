@@ -93,22 +93,29 @@ section h2 {
 
 /* Contact Section */
 .contact {
-    text-align: center;        /* centers everything */
-    margin-top: 40px;          /* spacing above */
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px 0;
+    border-top: 1px solid #333;
 }
 
 .contact h2 {
-    font-size: 32px;           /* large heading */
-    font-weight: bold;         /* bold */
-    margin-bottom: 10px;       /* spacing */
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .contact p {
-    color: #c0c0c0;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 1.6;
+    font-size: 22px;
+    font-weight: 500;
+    color: #dcdcdc;
+    line-height: 1.8;
+    margin: 0;
 }
+
 
 /* Footer */
 footer {
