@@ -92,9 +92,21 @@ section h2 {
 }
 
 /* Contact Section */
+.contact {
+    text-align: center;        /* centers everything */
+    margin-top: 40px;          /* spacing above */
+}
+
+.contact h2 {
+    font-size: 32px;           /* large heading */
+    font-weight: bold;         /* bold */
+    margin-bottom: 10px;       /* spacing */
+}
+
 .contact p {
-    color: #c0c0c0;
-    line-height: 1.6;
+    font-size: 24px;           /* large clean font */
+    font-weight: bold;         /* bold text */
+    line-height: 1.6;          /* spacing between lines */
 }
 
 /* Footer */
