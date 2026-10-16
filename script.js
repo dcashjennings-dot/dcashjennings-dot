@@ -28,17 +28,18 @@ const nextBtn = document.querySelector('.next');
 
 let index = 0;
 
+// Each image is now 400px wide + 20px margin = 420px slide distance
 nextBtn.addEventListener('click', () => {
     const images = document.querySelectorAll('.carousel-track img');
     if (index < images.length - 1) {
         index++;
-        track.style.transform = `translateX(-${index * 235}px)`;
+        track.style.transform = `translateX(-${index * 420}px)`;
     }
 });
 
 prevBtn.addEventListener('click', () => {
     if (index > 0) {
         index--;
-        track.style.transform = `translateX(-${index * 235}px)`;
+        track.style.transform = `translateX(-${index * 420}px)`;
     }
 });
